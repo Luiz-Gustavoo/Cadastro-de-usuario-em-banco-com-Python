@@ -26,7 +26,7 @@ while input_criar_conta_valido == False:
 
             if nome.isalpha():
                 nome_valido = True
-                print('Seu nome está correto. Vamos para a próxima parte.')
+                print('Olá {}!. Vamos para a próxima parte.'.format(nome))
             else:
                 print('Digite apenas letras')
                 continue
