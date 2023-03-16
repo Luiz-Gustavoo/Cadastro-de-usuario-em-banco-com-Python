@@ -10,7 +10,6 @@ print('')
 input_criar_conta_valido = False
 
 while input_criar_conta_valido == False:
-
     input_criar_conta = input('Você deseja criar uma conta no nosso banco? escolha de acordo com as opções acima: ')
     if input_criar_conta == 'sim':
         print('Ótimo! vamos começar o seu cadastro!')
@@ -19,14 +18,17 @@ while input_criar_conta_valido == False:
         print('Vamos precisar de algumas informações suas')
 
         nome_valido = False
+        
+
         while nome_valido == False:  # pedindo e verificando o nome do usuário
             nome = input('Digite o seu nome: ')
 
             print('')
 
-            if nome.isalpha():
+            if nome.isalpha(): 
                 nome_valido = True
                 print('Olá {}!. Vamos para a próxima parte.'.format(nome))
+                
             else:
                 print('Digite apenas letras')
                 continue
@@ -65,10 +67,37 @@ while input_criar_conta_valido == False:
             if cpf.isnumeric():
                 cpf_int = int(cpf)
 
-            if len(cpf) == 11:
-                print(cpf[0:3], cpf[3:6], cpf[6:9],cpf[9:], sep='.', end='-')
-                print('CPF válido para cadastro.')
-                cpf_valido = True
+                if len(cpf) == 11:
+                    print(cpf[0:3], cpf[3:6], cpf[6:9],cpf[9:], sep='.')
+                    print('CPF válido para cadastro.')
+                    cpf_valido = True
+                else:
+                    print('Quantidade de caracteres insuficiente. ')    
+            else:
+                print('Digite apenas números')
+            
+
+            
+        print('')
+        print('-'* 50)
+        print('Lembre-se que a senha precisa ter, no mínimo, 8 caracteres, incluindo letras, números e símbolos')
+        print('')
+        senha_valida = False
+        while senha_valida == False:    # senha da conta do cliente e verificando se a senha está de acordo com as regras 
+            input_senha = input('Crie sua senha: ')
+            print(len(input_senha))
+
+            if len(input_senha) >= 9:
+                print('Qauntidade de caracteres ok')
+
+                if '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8' or '9' in input_senha:
+                    print('números ok')
+                else:
+                    print('Quantidade de números insuficiente')    
+            else:
+                print('Quantidade de caracteres insuficiente' )
+                continue
+
 
     elif input_criar_conta == 'não':
         print('Que pena :( ... estaremos aqui caso mude de ideia')
