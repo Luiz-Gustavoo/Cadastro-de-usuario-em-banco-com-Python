@@ -11,7 +11,7 @@ input_criar_conta_valido = False
 
 while input_criar_conta_valido == False:
     input_criar_conta = input('Você deseja criar uma conta no nosso banco? escolha de acordo com as opções acima: ')
-    if input_criar_conta == 'sim':
+    if input_criar_conta == 'sim': # verificando se esta de acorod com as opções apresentadas
         print('Ótimo! vamos começar o seu cadastro!')
         input_criar_conta_valido = True
         print('-'* 50)
@@ -19,7 +19,6 @@ while input_criar_conta_valido == False:
 
         nome_valido = False
         
-
         while nome_valido == False:  # pedindo e verificando o nome do usuário
             nome = input('Digite o seu nome: ')
 
@@ -90,26 +89,44 @@ while input_criar_conta_valido == False:
 
         senha_valida = False
         while senha_valida == False:    # senha da conta do cliente e verificando se a senha está de acordo com as regras 
+            tem_numero = False
+            tem_simbolo = False
+
             input_senha = input('Crie sua senha: ')
-            
             if len(input_senha) >= 7:
-                print('Quantidade de caracteres ok')
 
-            tem_numero = ' '      
-            for numero_digitado in input_senha:
-                if numero_digitado in numeros:
-                    print('numero ok')
-                    break
+                for numero_digitado in input_senha: # verificando numeros na senha
+                    if numero_digitado in numeros:
+                        tem_numero = True
+                        break                    
+                    else:
+                        tem_numero = False
+                        
+                    for simbolo_digitado in input_senha: #  verificando simbolos na senha
+                        if simbolo_digitado in simbolos:
+                            tem_simbolo = True                                                     
+                            break                                   
+                        else:
+                            tem_simbolo = False
+
+                if tem_numero and tem_simbolo == True: # caso a condição for verdadeira, a senha está válida e o while para
+                    senha_valida = True                  
                 else:
-                    tem_numero = 'Sua senha não tem números'
-            print(tem_numero)
-            continue
-            
-        else:
-                    print('Quantidade de caracteres insuficiente' )
-                    continue
+                    if tem_numero == False:
+                        print('Não há números na sua senha')
+                        continue
+                    if tem_simbolo == False:
+                        print('Não há símbolos na sua senha')
+                        continue
+            else:
+                print('Quantidade de caracteres insuficiente' )
+                continue
 
+        print('')
 
+        print('-'* 50)
+        print('Tudo pronto! sua conta foi criada :)')
+        
     elif input_criar_conta == 'não':
         print('Que pena :( ... estaremos aqui caso mude de ideia')
         iinput_criar_conta_valido = True
@@ -118,4 +135,4 @@ while input_criar_conta_valido == False:
 
     else:
         input_criar_conta_valido = False
-        print('Digite apenas de acordo com as opções acima')
+        print('Digite apenas de acordo com as opções acima')                 
