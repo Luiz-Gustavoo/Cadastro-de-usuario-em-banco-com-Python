@@ -79,24 +79,35 @@ while input_criar_conta_valido == False:
 
             
         print('')
+
         print('-'* 50)
-        print('Lembre-se que a senha precisa ter, no mínimo, 8 caracteres, incluindo letras, números e símbolos')
+        print('Lembre-se que a senha precisa ter, no mínimo, 8 caracteres, incluindo letras, números e símbolos(!, @, #, $, %, &, *, (, ))')
+
         print('')
+
+        numeros = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+        simbolos = ['!', '@', '#', '$', '%', '&', '*', '(', ')']
+
         senha_valida = False
         while senha_valida == False:    # senha da conta do cliente e verificando se a senha está de acordo com as regras 
             input_senha = input('Crie sua senha: ')
-            print(len(input_senha))
+            
+            if len(input_senha) >= 7:
+                print('Quantidade de caracteres ok')
 
-            if len(input_senha) >= 9:
-                print('Qauntidade de caracteres ok')
-
-                if '1' or '2' or '3' or '4' or '5' or '6' or '7' or '8' or '9' in input_senha:
-                    print('números ok')
+            tem_numero = ' '      
+            for numero_digitado in input_senha:
+                if numero_digitado in numeros:
+                    print('numero ok')
+                    break
                 else:
-                    print('Quantidade de números insuficiente')    
-            else:
-                print('Quantidade de caracteres insuficiente' )
-                continue
+                    tem_numero = 'Sua senha não tem números'
+            print(tem_numero)
+            continue
+            
+        else:
+                    print('Quantidade de caracteres insuficiente' )
+                    continue
 
 
     elif input_criar_conta == 'não':
@@ -108,13 +119,3 @@ while input_criar_conta_valido == False:
     else:
         input_criar_conta_valido = False
         print('Digite apenas de acordo com as opções acima')
-
-'''
-
-
-print(999, 888, 777, sep='.', end='-')
-print(66)
-
-# 012345678910  
-# 12432777930
-'''
