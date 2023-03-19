@@ -24,7 +24,7 @@ while input_criar_conta_valido == False:
 
             print('')
 
-            if nome.isalpha(): 
+            if nome.isalpha(): # CORRIGIR "BUG"AQUI
                 nome_valido = True
                 print('Olá {}!. Vamos para a próxima parte.'.format(nome))
                 
@@ -126,7 +126,7 @@ while input_criar_conta_valido == False:
 
         print('-'* 50)
         print('Tudo pronto! sua conta foi criada :)')
-        
+
     elif input_criar_conta == 'não':
         print('Que pena :( ... estaremos aqui caso mude de ideia')
         iinput_criar_conta_valido = True
